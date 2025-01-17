@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-interface HeaderProps {
-  handleAddTodo: (query: string) => Promise<void> | undefined;
-}
+// interface HeaderProps {
+//   handleAddTodo: (query: string) => Promise<void> | undefined;
+// }
 
-export const Header: React.FC<HeaderProps> = ({ handleAddTodo }) => {
+export const Header: React.FC = () => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    handleAddTodo(query)?.then(() => setQuery(''));
+    // handleAddTodo(query)?.then(() => setQuery(''));
   };
 
   return (

@@ -3,6 +3,18 @@ import { client } from '../utils/fetchClient';
 
 export const USER_ID = 1398;
 
+// export const getTodos = (todosType: 'all' | 'active' | 'completed') => {
+//   switch (todosType) {
+//     case 'active':
+//       return client.get<Todo[]>(`/todos?userId=${USER_ID}&completed=false`);
+//     case 'completed':
+//       return client.get<Todo[]>(`/todos?userId=${USER_ID}&completed=true`);
+//     case 'all':
+//     default:
+//       return client.get<Todo[]>(`/todos?userId=${USER_ID}`);
+//   }
+// };
+
 export const getTodos = () => {
   return client.get<Todo[]>(`/todos?userId=${USER_ID}`);
 };

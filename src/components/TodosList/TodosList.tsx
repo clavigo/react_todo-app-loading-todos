@@ -5,17 +5,17 @@ import { Todo } from '../../types/Todo';
 interface TodoListProps {
   todoList: Todo[] | undefined;
   isLoading: boolean;
-  handleDeleteTodo: (todoId: number) => Promise<void> | undefined;
+  // handleDeleteTodo: (todoId: number) => Promise<void> | undefined;
   currentTodo: number;
-  handleUpdateTodo: (todo: Todo) => Promise<void> | undefined;
+  // handleUpdateTodo: (todo: Todo) => Promise<void> | undefined;
 }
 
 export const TodoList: React.FC<TodoListProps> = ({
   todoList,
   isLoading,
-  handleDeleteTodo,
+  // handleDeleteTodo,
   currentTodo,
-  handleUpdateTodo,
+  // handleUpdateTodo,
 }) => {
   return (
     <section className="todoapp__main" data-cy="TodoList">
@@ -39,10 +39,10 @@ export const TodoList: React.FC<TodoListProps> = ({
                 className="todo__status"
                 checked={todo.completed}
                 onChange={() => {
-                  handleUpdateTodo({
-                    ...todo,
-                    completed: !todo.completed,
-                  });
+                  // handleUpdateTodo({
+                  //   ...todo,
+                  //   completed: !todo.completed,
+                  // });
                 }}
               />
             </label>
@@ -55,7 +55,7 @@ export const TodoList: React.FC<TodoListProps> = ({
               type="button"
               className="todo__remove"
               data-cy="TodoDelete"
-              onClick={() => handleDeleteTodo(todo.id)}
+              // onClick={() => handleDeleteTodo(todo.id)}
             >
               ×
             </button>
