@@ -4,6 +4,22 @@ import classNames from 'classnames';
 import { Todo } from '../../types/Todo';
 import { useEffect, useState } from 'react';
 
+enum FilterType {
+  ALL = 'all',
+  ACTIVE = 'active',
+  COMPLETED = 'completed',
+}
+
+const filterItems = [
+  { type: FilterType.ALL, label: 'All', dataCy: 'FilterLinkAll' },
+  { type: FilterType.ACTIVE, label: 'Active', dataCy: 'FilterLinkActive' },
+  {
+    type: FilterType.COMPLETED,
+    label: 'Completed',
+    dataCy: 'FilterLinkCompleted',
+  },
+];
+
 interface FooterProps {
   todoList: Todo[];
   todosType: 'all' | 'active' | 'completed';
@@ -30,38 +46,19 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Active link should have the 'selected' class */}
         <nav className="filter" data-cy="Filter">
-          <a
-            href="#/"
-            className={classNames('filter__link', {
-              selected: todosType === 'all',
-            })}
-            data-cy="FilterLinkAll"
-            onClick={() => handleTodosTypeChange('all')}
-          >
-            All
-          </a>
-
-          <a
-            href="#/active"
-            className={classNames('filter__link', {
-              selected: todosType === 'active',
-            })}
-            data-cy="FilterLinkActive"
-            onClick={() => handleTodosTypeChange('active')}
-          >
-            Active
-          </a>
-
-          <a
-            href="#/completed"
-            className={classNames('filter__link', {
-              selected: todosType === 'completed',
-            })}
-            data-cy="FilterLinkCompleted"
-            onClick={() => handleTodosTypeChange('completed')}
-          >
-            Completed
-          </a>
+          {filterItems.map(({ type, label, dataCy }) => (
+            <a
+              key={type}
+              href="#/"
+              className={classNames('filter__link', {
+                selected: todosType === type,
+              })}
+              data-cy={dataCy}
+              onClick={() => handleTodosTypeChange(type)}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
 
         {/* this button should be disabled if there are no completed todos */}
